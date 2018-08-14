@@ -34,7 +34,9 @@ sf::Color ColorOutline; // button outline
 
 class Item
 {
+
 private:
+ItemGrid* ParentGrid; //Pointer to the item grid which will handle this item
 sf::Vector2i Position;// x/y of the item in grid space
 unsigned int ID;//uniq item ID
 bool IsUp; 
@@ -48,7 +50,7 @@ void SetID(unsigned int); //manual override for ID
 void UpdatePosition(sf::Vector2i); // update the value of Position
 
 //void DefineShape(); //might be used later
-Item();
+Item(ItemGrid*);
 };
 
 
@@ -65,7 +67,6 @@ class Game
 private:
 
 public:
-
 	sf::RenderWindow MainGameWindow;//stuff gets drawn here
 	std::vector<sf::Drawable*> AllDrawables;//list of all drawable objects
 	//note - above should be replaced with an unorderreed map in future
@@ -77,6 +78,8 @@ public:
 	Game();
 	sf::Clock GameClock;//a clock that keeps time
 	sf::Time DeltaTime;//keeps time since last update
+	ItemGrid* DefaultItemGrid;
+	std::vector <Item*> AllItems;
 };
 
 
@@ -119,6 +122,17 @@ int main()
 
 //ItemGrid - method definitions
 
+unsigned int ItemGrid::GetNewItemID()
+{
+	return IDTracker++;
+}
+
+ItemGrid::ItemGrid()
+{
+	IDTracker=1000;
+}
+
+
 //Button - method definitions
 
 //Item - method definitions
@@ -144,9 +158,11 @@ void Item::UpdatePosition(sf::Vector2i NewPosition)
 	Position=NewPosition;//updates postion of item
 }
 
-Item::Item()
+Item::Item(ItemGrid* CreatorPointer)
 {
-	ID=
+	ParentGrid=CreatorPointer;
+	ID=CreatorPointer->GetNewItemID();
+	std::cout<<ID;
 }
  
  
@@ -155,7 +171,7 @@ Item::Item()
 
 void Timed::UpdateTime(sf::Time Tick)
 {
-	std::cout<<"TimeUpdate";
+	//std::cout<<"TimeUpdate";//debug function
 } 
  
 //Game - method definitions
