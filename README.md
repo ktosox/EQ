@@ -1,2 +1,2 @@
-# One_Class
-A game written for: 'the 1 class jam' jam
+# Eqipment Managment
+An exmaple of eqipment managment interface
