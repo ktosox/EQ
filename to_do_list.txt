@@ -1,0 +1,28 @@
+		one class
+	Intro
+>rozpisanie tekstu 
+> dogs A
+> pancakes A
+> world peace B
+> plants B
+> power plants B
+> rubber chickens C
+> wigs C
+>poprawa redkosci poruszania sie zaslon
+	Menu
+>dodanie przyciskow 
+>nadanie tytulu [DONE]
+>aktualzaca obrazkow z lewej
+	Game
+>korekta obracania sie armaty
+>dodac umieszczanie min
+>dodanie przycisku powrot do menu [HALF DONE]
+>dodanie przycisku do tarcz [HALF DONE]
+>dodani przyisku do menu [HALF DONE]
+>zmiana kursora po wybraniu miny
+>korekta bazy pod armata
+>dodanie elementow na dole ekranu
+>wieksza eksplozja dla miny
+>dodanie obrazen i tracenie hp
+>dodanie opcji wyboru ktore pole silowe ma dzialac
+

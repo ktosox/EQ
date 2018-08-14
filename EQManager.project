@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="EQManager" Version="10.0.0" InternalType="">
+  <VirtualDirectory Name="EQ_managment">
+    <File Name="main.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="Include">
+    <VirtualDirectory Name="SFML">
+      <File Name="Include/SFML/Audio.hpp"/>
+      <File Name="Include/SFML/Graphics.hpp"/>
+      <File Name="Include/SFML/Config.hpp"/>
+      <File Name="Include/SFML/Window.hpp"/>
+      <File Name="Include/SFML/OpenGL.hpp"/>
+      <File Name="Include/SFML/Main.hpp"/>
+      <File Name="Include/SFML/Network.hpp"/>
+      <File Name="Include/SFML/System.hpp"/>
+      <VirtualDirectory Name="Window">
+        <File Name="Include/SFML/Window/VideoMode.hpp"/>
+        <File Name="Include/SFML/Window/Sensor.hpp"/>
+        <File Name="Include/SFML/Window/Event.hpp"/>
+        <File Name="Include/SFML/Window/Keyboard.hpp"/>
+        <File Name="Include/SFML/Window/Context.hpp"/>
+        <File Name="Include/SFML/Window/Window.hpp"/>
+        <File Name="Include/SFML/Window/WindowStyle.hpp"/>
+        <File Name="Include/SFML/Window/Export.hpp"/>
+        <File Name="Include/SFML/Window/Joystick.hpp"/>
+        <File Name="Include/SFML/Window/ContextSettings.hpp"/>
+        <File Name="Include/SFML/Window/GlResource.hpp"/>
+        <File Name="Include/SFML/Window/Mouse.hpp"/>
+        <File Name="Include/SFML/Window/WindowHandle.hpp"/>
+        <File Name="Include/SFML/Window/Touch.hpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Network">
+        <File Name="Include/SFML/Network/SocketSelector.hpp"/>
+        <File Name="Include/SFML/Network/SocketHandle.hpp"/>
+        <File Name="Include/SFML/Network/TcpListener.hpp"/>
+        <File Name="Include/SFML/Network/Http.hpp"/>
+        <File Name="Include/SFML/Network/UdpSocket.hpp"/>
+        <File Name="Include/SFML/Network/Export.hpp"/>
+        <File Name="Include/SFML/Network/Packet.hpp"/>
+        <File Name="Include/SFML/Network/TcpSocket.hpp"/>
+        <File Name="Include/SFML/Network/Socket.hpp"/>
+        <File Name="Include/SFML/Network/IpAddress.hpp"/>
+        <File Name="Include/SFML/Network/Ftp.hpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="System">
+        <File Name="Include/SFML/System/Utf.hpp"/>
+        <File Name="Include/SFML/System/NonCopyable.hpp"/>
+        <File Name="Include/SFML/System/ThreadLocal.hpp"/>
+        <File Name="Include/SFML/System/Export.hpp"/>
+        <File Name="Include/SFML/System/Clock.hpp"/>
+        <File Name="Include/SFML/System/Mutex.hpp"/>
+        <File Name="Include/SFML/System/Lock.hpp"/>
+        <File Name="Include/SFML/System/Err.hpp"/>
+        <File Name="Include/SFML/System/Thread.hpp"/>
+        <File Name="Include/SFML/System/NativeActivity.hpp"/>
+        <File Name="Include/SFML/System/ThreadLocalPtr.hpp"/>
+        <File Name="Include/SFML/System/MemoryInputStream.hpp"/>
+        <File Name="Include/SFML/System/FileInputStream.hpp"/>
+        <File Name="Include/SFML/System/String.hpp"/>
+        <File Name="Include/SFML/System/Sleep.hpp"/>
+        <File Name="Include/SFML/System/Vector2.hpp"/>
+        <File Name="Include/SFML/System/Vector3.hpp"/>
+        <File Name="Include/SFML/System/Time.hpp"/>
+        <File Name="Include/SFML/System/InputStream.hpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Audio">
+        <File Name="Include/SFML/Audio/Listener.hpp"/>
+        <File Name="Include/SFML/Audio/AlResource.hpp"/>
+        <File Name="Include/SFML/Audio/SoundFileWriter.hpp"/>
+        <File Name="Include/SFML/Audio/Export.hpp"/>
+        <File Name="Include/SFML/Audio/SoundRecorder.hpp"/>
+        <File Name="Include/SFML/Audio/Music.hpp"/>
+        <File Name="Include/SFML/Audio/Sound.hpp"/>
+        <File Name="Include/SFML/Audio/SoundBufferRecorder.hpp"/>
+        <File Name="Include/SFML/Audio/SoundFileFactory.hpp"/>
+        <File Name="Include/SFML/Audio/SoundSource.hpp"/>
+        <File Name="Include/SFML/Audio/SoundStream.hpp"/>
+        <File Name="Include/SFML/Audio/InputSoundFile.hpp"/>
+        <File Name="Include/SFML/Audio/SoundFileReader.hpp"/>
+        <File Name="Include/SFML/Audio/SoundBuffer.hpp"/>
+        <File Name="Include/SFML/Audio/OutputSoundFile.hpp"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="Graphics">
+        <File Name="Include/SFML/Graphics/Font.hpp"/>
+        <File Name="Include/SFML/Graphics/Drawable.hpp"/>
+        <File Name="Include/SFML/Graphics/BlendMode.hpp"/>
+        <File Name="Include/SFML/Graphics/RenderTarget.hpp"/>
+        <File Name="Include/SFML/Graphics/Color.hpp"/>
+        <File Name="Include/SFML/Graphics/Vertex.hpp"/>
+        <File Name="Include/SFML/Graphics/View.hpp"/>
+        <File Name="Include/SFML/Graphics/Texture.hpp"/>
+        <File Name="Include/SFML/Graphics/Shader.hpp"/>
+        <File Name="Include/SFML/Graphics/Transformable.hpp"/>
+        <File Name="Include/SFML/Graphics/Image.hpp"/>
+        <File Name="Include/SFML/Graphics/Rect.hpp"/>
+        <File Name="Include/SFML/Graphics/Export.hpp"/>
+        <File Name="Include/SFML/Graphics/Shape.hpp"/>
+        <File Name="Include/SFML/Graphics/Transform.hpp"/>
+        <File Name="Include/SFML/Graphics/RenderWindow.hpp"/>
+        <File Name="Include/SFML/Graphics/Glyph.hpp"/>
+        <File Name="Include/SFML/Graphics/VertexArray.hpp"/>
+        <File Name="Include/SFML/Graphics/PrimitiveType.hpp"/>
+        <File Name="Include/SFML/Graphics/RectangleShape.hpp"/>
+        <File Name="Include/SFML/Graphics/RenderStates.hpp"/>
+        <File Name="Include/SFML/Graphics/ConvexShape.hpp"/>
+        <File Name="Include/SFML/Graphics/RenderTexture.hpp"/>
+        <File Name="Include/SFML/Graphics/Text.hpp"/>
+        <File Name="Include/SFML/Graphics/CircleShape.hpp"/>
+        <File Name="Include/SFML/Graphics/Glsl.hpp"/>
+        <File Name="Include/SFML/Graphics/Sprite.hpp"/>
+      </VirtualDirectory>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Executable">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( x86_64-linux-gnu )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g -Wall" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="-O0" Required="yes">
+        <LibraryPath Value="."/>
+        <LibraryPath Value="Debug"/>
+      </Linker>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/$(ProjectName)" IntermediateDirectory="./Debug" Command="./$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="./Debug" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <BuildSystem Name="Default"/>
+      <Environment EnvVarSetName="&lt;Use Workspace Settings&gt;" DbgSetName="&lt;Use Global Settings&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="no">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+</CodeLite_Project>
