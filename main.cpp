@@ -3,39 +3,44 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
+class Game;
+
 //------------------simple equipment managment game
 
 //common objects as classes
 
-class ItemGrid//this will hold the position of items in equpiment
+class ItemGrid //this will hold the position of items in equpiment
 {
 private:
+Game* ParentGame;
 unsigned int IDTracker;//keeps track of latest Item ID
 public:
+Game* ReturnParentGame();
 unsigned int GetNewItemID();
-ItemGrid();//creates a defualt value for IDTracker
+ItemGrid(Game*);
 };
 
-class Button
+class Button //generic button base
 {
 private:
-
+Game* ParentGame;
 public:
 sf::RectangleShape ButtonBody; //body of ze button
 sf::Text ButtonText; //text on ze button
 std::string TextString; //string for ButtonText
-sf::Font TextFont; // font of ButtonText
 sf::Color ColorText; // color of text
 sf::Color ColorFill1; //button color in state1
 sf::Color ColorFill2; // button color in state2
 sf::Color ColorOutline; // button outline
-//Button();
+
+Button(Game*);
 };
 
-class Item
+class Item //basic item class
 {
 
 private:
+Game* ParentGame;
 ItemGrid* ParentGrid; //Pointer to the item grid which will handle this item
 sf::Vector2i Position;// x/y of the item in grid space
 unsigned int ID;//uniq item ID
@@ -53,8 +58,7 @@ void UpdatePosition(sf::Vector2i); // update the value of Position
 Item(ItemGrid*);
 };
 
-
-class Timed
+class Timed //everything that requires time upadate
 {
 private:
 
@@ -62,11 +66,12 @@ public:
 	void UpdateTime(sf::Time);
 };
 
-class Game
+class Game //base game class
 {
 private:
 
 public:
+	sf::Font TextFontDefault; // default font of used by all text
 	sf::RenderWindow MainGameWindow;//stuff gets drawn here
 	std::vector<sf::Drawable*> AllDrawables;//list of all drawable objects
 	//note - above should be replaced with an unorderreed map in future
@@ -75,32 +80,27 @@ public:
 	void LoopDraw(); //keep drawing to the screen
 	void LoopEvent();//keep reacting to events
 	void LoopTime(); //keep the time passing
-	Game();
 	sf::Clock GameClock;//a clock that keeps time
 	sf::Time DeltaTime;//keeps time since last update
 	ItemGrid* DefaultItemGrid;
 	std::vector <Item*> AllItems;
+	Game();	
 };
 
 
 
 
 
-//main game loop
+//main - game loop
 int main()
 {
-
 	Game OknoGry;
-	
-
-	sf::RectangleShape test;
+	sf::RectangleShape test; //debugstuff
 	test.setPosition(200.0,250.0);
 	test.setFillColor(sf::Color::Green);
 	test.setSize(sf::Vector2f(350.0,240.0));
 	OknoGry.AllDrawables.push_back(&test);
-	Timed TimeTest;
-	OknoGry.AllTimebles.push_back(&TimeTest);
-	//a way of keeping track of existing items and their data (np. placement)
+
 	
 	while(OknoGry.MainGameWindow.isOpen())//game loop
 	{
@@ -108,12 +108,6 @@ int main()
 		OknoGry.LoopEvent();
 		OknoGry.LoopTime();		
 	}
-	// welcome screen
-	// -welcome backgorund 
-	// - welcome screen buttons
-	
-	// game screen
-	// -equipment background
 	std::cout<<"Program ended"<<'\n';
 	return 0;
 	
@@ -127,13 +121,26 @@ unsigned int ItemGrid::GetNewItemID()
 	return IDTracker++;
 }
 
-ItemGrid::ItemGrid()
+Game* ItemGrid::ReturnParentGame()
 {
+	return ParentGame;
+}
+
+ItemGrid::ItemGrid(Game* TheGame)
+{
+	ParentGame=TheGame;
 	IDTracker=1000;
 }
 
 
 //Button - method definitions
+
+Button::Button(Game* TheGame)
+{
+	ParentGame=TheGame;
+	ButtonBody.setPosition(0.0,0.0);
+	//ButtonBody.
+}
 
 //Item - method definitions
  
@@ -161,7 +168,8 @@ void Item::UpdatePosition(sf::Vector2i NewPosition)
 Item::Item(ItemGrid* CreatorPointer)
 {
 	ParentGrid=CreatorPointer;
-	ID=CreatorPointer->GetNewItemID();
+	ParentGame=ParentGrid->ReturnParentGame();
+	ID=ParentGrid->GetNewItemID();
 	std::cout<<ID;
 }
  
@@ -204,6 +212,12 @@ void Game::LoopEvent()
 			std::cout<<"Mouse button pressed"<<'\n';
 			//mouse button press stuff here
 			break;
+			case sf::Event::LostFocus :
+			std::cout<<"Lost screen Focus"<<'\n';
+			break;
+			case sf::Event::GainedFocus :
+			std::cout<<"Regained screen Focus"<<'\n';
+			break;
 			default : //ignore all other events
 			break;
 		}
@@ -227,4 +241,7 @@ void Game::LoopTime()
 Game::Game()
 {
 	MainGameWindow.create(sf::VideoMode(1024,768),"Equipment Manager",sf::Style::Close);
+	
+	ItemGrid testGrid(this);
+	
 }
