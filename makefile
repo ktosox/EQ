@@ -3,7 +3,7 @@ EXE := Inventarz
 
 CXX :=g++
 
-#VPATH :=/home/admin/Pulpit/Backup_all/Drivers/SFML_przyklady/EQ_managment
+#VPATH :=/home/user/Repos/EQ
 
 # Specify the source files
 # Effectively list all source files in the current directory
@@ -18,7 +18,7 @@ OBJ := $(SRC:.cpp=.o)
 DEP := $(OBJ:.o=.d)
 
 # Specify preprocessor flags (this is a built-in variable)
-CPPFLAGS :=-I/usr/include -I/home/admin/Pulpit/Backup_all/Drivers/SFML_przyklady/EQ_managment/Include
+CPPFLAGS :=-I/usr/include -I/home/user/Repos/EQ/Include/
 # Required flags to enable the automatic dependency generation by the compiler
 CPPFLAGS += -MMD -MP
 
@@ -27,7 +27,7 @@ CPPFLAGS += -MMD -MP
 CXXFLAGS := -Wall -g -O0 -std=c++11
 
 # Specify linker flags (this is a built-in variable)
-LDFLAGS := -L/home/admin/Pulpit/Backup_all/Drivers/SFML_przyklady/EQ_managment/Libraries/SFML -L/usr/lib/x86_64-linux-gnu 
+LDFLAGS := -L/home/user/Repos/EQ/Libraries/SFML -L/usr/lib/x86_64-linux-gnu 
 
 # Specify linker libraries (this is a built-in variable)
 LDLIBS=-lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-system-s -lfreetype -lpng -ljpeg -lFLAC -logg -lvorbisenc -lvorbis -lvorbisfile -lxcb-randr -lxcb-image -lXrandr -lX11-xcb -lX11 -ludev -lGL -lglut -lopenal -lpthread -lz
