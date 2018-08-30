@@ -3,39 +3,14 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-class Game;
+
 
 //------------------simple equipment managment game
 
 //common objects as classes
 
-class ItemGrid //this will hold the position of items in equpiment
-{
-private:
-Game* ParentGame;
-unsigned int IDTracker;//keeps track of latest Item ID
-public:
-Game* ReturnParentGame();
-unsigned int GetNewItemID();
-ItemGrid(Game*);
-};
-
-class Button //generic button base
-{
-private:
-Game* ParentGame;
-public:
-sf::RectangleShape ButtonBody; //body of ze button
-sf::Text ButtonText; //text on ze button
-std::string TextString; //string for ButtonText
-sf::Color ColorText; // color of text
-sf::Color ColorFill1; //button color in state1
-sf::Color ColorFill2; // button color in state2
-sf::Color ColorOutline; // button outline
-
-Button(Game*);
-};
-
+class Game;//predefinition so Game pointers can exist
+class ItemGrid;//predefinition so ItemGrid pointers can exist
 class Item //basic item class
 {
 
@@ -57,6 +32,38 @@ void UpdatePosition(sf::Vector2i); // update the value of Position
 //void DefineShape(); //might be used later
 Item(ItemGrid*);
 };
+
+
+class ItemGrid //this will hold info regarding items
+{
+private:
+Game* ParentGame;
+
+unsigned int IDTracker;//keeps track of latest Item ID
+unsigned int SelectedItem; // keeps track of what item is selected
+public:
+std::vector<Item*> AllItems;
+Game* ReturnParentGame(); //returns pointer to the main Game object
+unsigned int GetNewItemID(); //returns IDTracker++
+ItemGrid(Game*);
+};
+
+class Button //generic button base
+{
+private:
+Game* ParentGame;
+public:
+sf::RectangleShape ButtonBody; //body of ze button
+sf::Text ButtonText; //text on ze button
+std::string TextString; //string for ButtonText
+sf::Color ColorText; // color of text
+sf::Color ColorFill1; //button color in state1
+sf::Color ColorFill2; // button color in state2
+sf::Color ColorOutline; // button outline
+
+Button(Game*);
+};
+
 
 class Timed //everything that requires time upadate
 {
@@ -83,7 +90,6 @@ public:
 	sf::Clock GameClock;//a clock that keeps time
 	sf::Time DeltaTime;//keeps time since last update
 	ItemGrid* DefaultItemGrid;
-	std::vector <Item*> AllItems;
 	Game();	
 };
 
@@ -168,9 +174,10 @@ void Item::UpdatePosition(sf::Vector2i NewPosition)
 Item::Item(ItemGrid* CreatorPointer)
 {
 	ParentGrid=CreatorPointer;
+	ParentGrid->AllItems.push_back(this);
 	ParentGame=ParentGrid->ReturnParentGame();
-	ID=ParentGrid->GetNewItemID();
-	std::cout<<ID;
+	SetID(ParentGrid->GetNewItemID());
+	std::cout<<ID;//debug line to confirm what ID was set
 }
  
  
