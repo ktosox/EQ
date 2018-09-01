@@ -1,7 +1,7 @@
 # Specify the final target name
 EXE := Inventarz
 
-CXX :=g++
+CXX :=g++ -no-pie
 
 #VPATH :=/home/user/Repos/EQ
 
@@ -18,7 +18,8 @@ OBJ := $(SRC:.cpp=.o)
 DEP := $(OBJ:.o=.d)
 
 # Specify preprocessor flags (this is a built-in variable)
-CPPFLAGS :=-I/usr/include -I/home/user/Repos/EQ/Include/
+CPPFLAGS :=-I/usr/include 
+#-I/home/user/Repos/EQ/Include/
 # Required flags to enable the automatic dependency generation by the compiler
 CPPFLAGS += -MMD -MP
 
@@ -27,10 +28,11 @@ CPPFLAGS += -MMD -MP
 CXXFLAGS := -Wall -g -O0 -std=c++11
 
 # Specify linker flags (this is a built-in variable)
-LDFLAGS := -L/home/user/Repos/EQ/Libraries/SFML -L/usr/lib/x86_64-linux-gnu 
+LDFLAGS := -L/usr/lib/x86_64-linux-gnu 
+# -L/home/user/Repos/EQ/Libraries/SFML 
 
 # Specify linker libraries (this is a built-in variable)
-LDLIBS=-lsfml-graphics-s -lsfml-window-s -lsfml-audio-s -lsfml-system-s -lfreetype -lpng -ljpeg -lFLAC -logg -lvorbisenc -lvorbis -lvorbisfile -lxcb-randr -lxcb-image -lXrandr -lX11-xcb -lX11 -ludev -lGL -lglut -lopenal -lpthread -lz
+LDLIBS=-lsfml-graphics -lsfml-window -lsfml-audio -lsfml-system -lfreetype -lpng -ljpeg -lFLAC -logg -lvorbisenc -lvorbis -lvorbisfile -lxcb-randr -lxcb-image -lXrandr -lX11-xcb -lX11 -ludev -lGL -lglut -lopenal -lpthread -lz
 
 # Tell make that these target are not real files
 .PHONY: all clean

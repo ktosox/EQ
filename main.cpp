@@ -203,6 +203,7 @@ void Game::LoopDraw()
 		MainGameWindow.draw(*AllDrawables[i]);
 	}
 	MainGameWindow.display();	
+	
 	return;
 }
 
@@ -242,6 +243,7 @@ void Game::LoopTime()
 	}
 	//pass delta T to evenrything that needs time
 	//reset time
+	 
 	return;
 }
 
