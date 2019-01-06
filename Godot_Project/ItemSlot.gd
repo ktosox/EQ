@@ -1,6 +1,6 @@
 extends ColorRect
 
-var Inventory
+var Inventory #this holds the owner of this node
 var ItemData = {"ID" : 0, "ItemType" : Color()}
 var red 
 var blue
@@ -9,16 +9,12 @@ var green
 func _ready():
 	randomize()
 	red=randf()
-	#print(red)
 	blue=randf()
-	#print(blue)
 	green=randf()
-	#print(green)
 	ItemData["ItemType"] = Color(red,blue,green)
 	color=ItemData["ItemType"]
 	#print ("new ItemSlot created at ", self.rect_position.x," " , self.rect_position.y)
-	print ("My Tag is: ", ItemData["ID"])
-	pass
+	#print ("My Tag is: ", ItemData["ID"])
 
 func get_drag_data(position):
 	#print("drag started")
@@ -29,23 +25,17 @@ func get_drag_data(position):
 	return ItemData
 
 func can_drop_data(position, data):
-	
+	#somekind of valid check should be here
 	return true
 
 func drop_data(position, newItem):
-	#print("Item: ",ItemData["ID"], " got drop data from ", newItem["ID"])
 	var oldColor = self.color
 	var newColor = newItem["ItemType"]
-	Inventory.ListOfItemSlots[newItem["ID"]].UpdateColor(oldColor)
-	UpdateColor(newColor)
-	pass
+	Inventory.ListOfItemSlots[newItem["ID"]].updateColor(oldColor)
+	#this should be replaced with a call to Inventory informing of the swap event
+	#at Inventory side validity calculation should be actioned and updateColor / othe updates sent as needed
+	updateColor(newColor)
 
-func UpdateColor(newColor):
+func updateColor(newColor):
 	ItemData["ItemType"] = newColor
 	color = newColor
-	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
