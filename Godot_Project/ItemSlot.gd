@@ -1,46 +1,49 @@
 extends ColorRect
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-var ItemType = Color()
+var Inventory
+var ItemData = {"ID" : 0, "ItemType" : Color()}
 var red 
 var blue
 var green
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
 	randomize()
-	red=randf(100)
+	red=randf()
 	#print(red)
-	blue=randf(100)
+	blue=randf()
 	#print(blue)
-	green=randf(100)
+	green=randf()
 	#print(green)
-	ItemType = Color(red,blue,green)
-	color=ItemType
-	print ("new ItemSlot created at ", self.rect_position.x," " , self.rect_position.y)
-	#self.rect_global_position = Vector2(2,2)
+	ItemData["ItemType"] = Color(red,blue,green)
+	color=ItemData["ItemType"]
+	#print ("new ItemSlot created at ", self.rect_position.x," " , self.rect_position.y)
+	print ("My Tag is: ", ItemData["ID"])
 	pass
 
 func get_drag_data(position):
-	print("drag started")
+	#print("drag started")
 	var moving = ColorRect.new()
-	moving.rect_size = Vector2(20,20)
+	moving.rect_size = Vector2(rect_size.x,rect_size.y)
 	moving.color=color
 	set_drag_preview(moving)
-	return ItemType
+	return ItemData
 
 func can_drop_data(position, data):
+	
 	return true
 
 func drop_data(position, newItem):
-	print(newItem)
-	ItemType = newItem
-	color = newItem
+	#print("Item: ",ItemData["ID"], " got drop data from ", newItem["ID"])
+	var oldColor = self.color
+	var newColor = newItem["ItemType"]
+	Inventory.ListOfItemSlots[newItem["ID"]].UpdateColor(oldColor)
+	UpdateColor(newColor)
 	pass
 
+func UpdateColor(newColor):
+	ItemData["ItemType"] = newColor
+	color = newColor
+	pass
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

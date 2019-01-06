@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="EQ_Manager"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Inventory_Scene.tscn"
 config/icon="res://icon.png"
 
 [rendering]
