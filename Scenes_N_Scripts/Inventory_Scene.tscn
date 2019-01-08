@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes_N_Scripts/Inventory_Scene.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Artwork/Simple_Border.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Sounds/Derp Nugget_short.ogg" type="AudioStream" id=3]
 
-[node name="Inventory_Scene" type="ColorRect" index="0"]
+[node name="Inventory_Scene" type="ColorRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -53,14 +52,5 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 _sections_unfolded = [ "Rect" ]
-
-[node name="BackgroudMusic" type="AudioStreamPlayer" parent="." index="2"]
-
-stream = ExtResource( 3 )
-volume_db = -12.0
-pitch_scale = 1.0
-autoplay = true
-mix_target = 0
-bus = "Master"
 
 

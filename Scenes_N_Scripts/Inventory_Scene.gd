@@ -1,6 +1,15 @@
 extends ColorRect
 
 
+#to do
+#-allow multiple inventories to work together
+#how do they talk?
+#a interface for comunication between invntories might be needed
+# possibly a way for item slots to pass info for whch inventory the swap is inititaed
+
+#-global item database
+
+
 #DEFINE NUMBER OF ITEM SLOTS
 const numberOfSlotsX = 5
 const numberOfSlotsY = 5
