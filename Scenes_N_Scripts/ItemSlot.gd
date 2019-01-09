@@ -1,17 +1,12 @@
 extends ColorRect
 
 var Inventory #this holds the owner of this node
+var ItemLocationID #a unique number defined by ItemManager
 var ItemData = {"ID" : 0, "ItemType" : Color()}
-var red 
-var blue
-var green
 
 func _ready():
 	randomize()
-	red=randf()
-	blue=randf()
-	green=randf()
-	ItemData["ItemType"] = Color(red,blue,green)
+	ItemData["ItemType"] = Color(randf(),randf(),randf())
 	color=ItemData["ItemType"]
 	#print ("new ItemSlot created at ", self.rect_position.x," " , self.rect_position.y)
 	#print ("My Tag is: ", ItemData["ID"])
@@ -36,3 +31,7 @@ func drop_data(position, newItem):
 func updateColor(newColor):
 	ItemData["ItemType"] = newColor
 	color = newColor
+
+func changeItem(newItem):
+	#update the ItemData held by this ItemSlot
+	pass

@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="EQ_Manager"
-run/main_scene="res://Scenes_N_Scripts/GameOverlay.tscn"
+run/main_scene="res://Scenes_N_Scripts/ItemManager.tscn"
 config/icon="res://Resources/Artwork/Vivid_Candy_small.png"
 
 [rendering]

@@ -1,4 +1,4 @@
-# Game Inventory Manager in Godot
+# Game Inventory Manager in Godot - WIP
 
 Goals:
 Create a robust framework for in game item managment.
