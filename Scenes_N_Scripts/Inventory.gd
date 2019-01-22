@@ -63,6 +63,9 @@ func makeNewItemSlot(countX, countY):
 	NewSlot.rect_global_position = Vector2(countX*sizeOfItemSlotX + countX*sizeOfItemSlotGapX, countY*sizeOfItemSlotY + countY*sizeOfItemSlotGapY)
 	$ItemSlotLayer.add_child(NewSlot) #add NewSlot to the layer that hold ItemSlots
 	
+	
+func startPickUpEvent():
+	pass
 func swapSlots(firstSlotID, secondSlotID):
 	#update internal logic here
 	var firstColor = ListOfItemSlots[firstSlotID].ItemData["ItemType"]
