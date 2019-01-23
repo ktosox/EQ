@@ -43,7 +43,7 @@ func _ready():
 	#move the inner slot container so its centerd in the Inventory
 	$ItemSlotLayer.rect_global_position.x = self.rect_global_position.x + sizeOfInventoryBoarderX
 	$ItemSlotLayer.rect_global_position.y = self.rect_global_position.y + sizeOfInventoryBoarderY
-	fillItemSlotGrid() #place all of the itemslots
+	#fillItemSlotGrid() #place all of the itemslots
 
 func fillItemSlotGrid():
 	var width = 0
@@ -54,8 +54,8 @@ func fillItemSlotGrid():
 
 func makeNewItemSlot(countX, countY):
 	var NewSlot = ItemSlotBase.instance()
-	NewSlot.Inventory = self #set this as the controler of NewSlot
-	NewSlot.ItemData["ID"] = CurrentItemSlotID #set NewSlot ID
+	NewSlot.parentInventory = self #set this as the controler of NewSlot
+	#NewSlot.ItemData["ID"] = CurrentItemSlotID #set NewSlot ID
 	ListOfItemSlots[CurrentItemSlotID] = NewSlot #pair ID and NewSlot
 	CurrentItemSlotID+=1 #update ID tracker
 	#resize and place NewSlot
@@ -64,12 +64,24 @@ func makeNewItemSlot(countX, countY):
 	$ItemSlotLayer.add_child(NewSlot) #add NewSlot to the layer that hold ItemSlots
 	
 	
-func startPickUpEvent():
-	pass
+
+	
+	
 func swapSlots(firstSlotID, secondSlotID):
 	#update internal logic here
 	var firstColor = ListOfItemSlots[firstSlotID].ItemData["ItemType"]
 	var secondColor = ListOfItemSlots[secondSlotID].ItemData["ItemType"]
 	ListOfItemSlots[secondSlotID].updateColor(firstColor)
 	ListOfItemSlots[firstSlotID].updateColor(secondColor)
+	
+	
+func lockInventory(type = 0):
+	#locks down entire inventory
+	#all drag and pick up events are ignored util unlocked
+	pass
+
+
+func unlockInventory():
+	#removes lock from inventory
+	pass
 	
