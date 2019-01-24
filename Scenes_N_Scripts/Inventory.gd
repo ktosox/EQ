@@ -64,7 +64,13 @@ func makeNewItemSlot(countX, countY):
 	$ItemSlotLayer.add_child(NewSlot) #add NewSlot to the layer that hold ItemSlots
 	
 	
-
+func _gui_input(event):
+	if(event.is_class("InputEventMouseButton")):
+		if(event.button_index == 2):
+			set_drag_preview(Control.new())
+	
+	#if(event == InputEventMouseButton):
+	
 	
 	
 func swapSlots(firstSlotID, secondSlotID):

@@ -24,12 +24,13 @@ margin_left = 53.0
 margin_top = 73.0
 margin_right = -648.0
 margin_bottom = -277.0
+_sections_unfolded = [ "Mouse", "Rect" ]
 
 [node name="Inventory2" parent="." index="1" instance=ExtResource( 2 )]
 
 margin_left = 460.0
 margin_top = 293.0
-margin_right = -175.0
-margin_bottom = -68.0
+margin_right = -325.0
+margin_bottom = -69.0
 
 

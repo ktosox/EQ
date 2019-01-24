@@ -11,7 +11,8 @@ func _ready():
 
 func _gui_input(event):
 	if(event.is_pressed()):
-		get_drag_data(self.get_global_mouse_position())
+		if(!SlotData["IsLocked"]):
+			get_drag_data(self.get_global_mouse_position())
 
 	if(!event.is_pressed()):
 		print("notPressed")
@@ -22,7 +23,7 @@ func get_drag_data(position):
 	#print("drag started")
 	var moving = ColorRect.new()
 	moving.rect_size = Vector2(rect_size.x,rect_size.y)
-	moving.color=Color(1,1,1)
+	moving.color=self.color
 	set_drag_preview(moving)
 	return ItemData
 
