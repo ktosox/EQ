@@ -1,13 +1,7 @@
 extends ColorRect
 
+var parentManager #this holds the manager controling this inventory
 
-#to do
-#-allow multiple inventories to work together
-#how do they talk?
-#a interface for comunication between invntories might be needed
-# possibly a way for item slots to pass info for whch inventory the swap is inititaed
-
-#-global item database
 
 
 #DEFINE NUMBER OF ITEM SLOTS
@@ -32,8 +26,6 @@ var ItemSlotBase = load("res://Scenes_N_Scripts/ItemSlot.tscn")
 #dictionary pairs ItemSlot IDs with specific ItemSlot Nodes
 var ListOfItemSlots = {}
 
-#variable for tracking given out IDs
-var CurrentItemSlotID = 100
 
 func _ready():
 	#rescale this so it can hold all of the slots
@@ -55,9 +47,8 @@ func fillItemSlotGrid():
 func makeNewItemSlot(countX, countY):
 	var NewSlot = ItemSlotBase.instance()
 	NewSlot.parentInventory = self #set this as the controler of NewSlot
-	#NewSlot.ItemData["ID"] = CurrentItemSlotID #set NewSlot ID
-	ListOfItemSlots[CurrentItemSlotID] = NewSlot #pair ID and NewSlot
-	CurrentItemSlotID+=1 #update ID tracker
+	NewSlot.slotLocation = parentManager.assignSlotLocation()
+	ListOfItemSlots[NewSlot.slotLocationID] = NewSlot #pair ID and NewSlot
 	#resize and place NewSlot
 	NewSlot.rect_size = Vector2(sizeOfItemSlotX,sizeOfItemSlotY)
 	NewSlot.rect_global_position = Vector2(countX*sizeOfItemSlotX + countX*sizeOfItemSlotGapX, countY*sizeOfItemSlotY + countY*sizeOfItemSlotGapY)

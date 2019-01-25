@@ -1,5 +1,9 @@
 extends ReferenceRect
 
+
+var itemSlotIDTracker = 0
+
+
 #internal database copy goes here
 
 
@@ -7,19 +11,18 @@ extends ReferenceRect
 var ownedInventories = []
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+
 	
 	#future implementation
 	#for a 0 to get_child_count()-1 / ownedInventories.append(get_child(a))
+	
 	ownedInventories.append(get_child(0))
 	ownedInventories.append(get_child(1))
-
+	ownedInventories[0].parentManager = self
+	ownedInventories[1].parentManager = self
 	pass
 
 #func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
 #	pass
 
 
@@ -32,9 +35,16 @@ func _ready():
 
 #intercafe for inventory goes here
 
-func loadToInventory(ItemData):
+func addItem(ItemData):
 	#pass item data to inventory
 	#check for sucess
 	pass
+
+func removeItem():
+	pass
+
+func assignSlotLocation():
+	itemSlotIDTracker += 1
+	return itemSlotIDTracker
 
 #interface for item database goes here WIP

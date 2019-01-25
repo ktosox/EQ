@@ -13,9 +13,6 @@ func _gui_input(event):
 	if(event.is_pressed()):
 		if(!SlotData["IsLocked"]):
 			get_drag_data(self.get_global_mouse_position())
-
-	if(!event.is_pressed()):
-		print("notPressed")
 	pass
 
 func get_drag_data(position):
