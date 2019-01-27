@@ -2,24 +2,23 @@ extends ColorRect
 
 var parentManager #this holds the manager controling this inventory
 
-var currentItem = null
-var currentSlot = null
+
 
 #DEFINE NUMBER OF ITEM SLOTS
-const numberOfSlotsX = 5
-const numberOfSlotsY = 5
+#const numberOfSlotsX = 5
+#const numberOfSlotsY = 5
 
 #DEFINE SIZE/SHAPE OF ITEM SLOTS
-const sizeOfItemSlotX = 35
-const sizeOfItemSlotY = 35
+#const sizeOfItemSlotX = 35
+#const sizeOfItemSlotY = 35
 
 #DEFINE HOW BIG THE BOARDER SHOULD BE
-const sizeOfInventoryBoarderX = 15
-const sizeOfInventoryBoarderY = 15
+#const sizeOfInventoryBoarderX = 15
+#const sizeOfInventoryBoarderY = 15
 
 #DEFINE SPACE BETWEEN SLOTS
-const sizeOfItemSlotGapX = 0
-const sizeOfItemSlotGapY = 0
+#const sizeOfItemSlotGapX = 0
+#const sizeOfItemSlotGapY = 0
 
 #preload item class
 var ItemSlotBase = load("res://Scenes_N_Scripts/ItemSlot.tscn")
@@ -29,19 +28,14 @@ var ListOfItemSlots = {}
 
 
 func _ready():
-	$ItemSlotLayer/ItemSlot.parentInventory = self
-	$ItemSlotLayer/ItemSlot2.parentInventory = self
-	$ItemSlotLayer/ItemSlot3.parentInventory = self
-	$ItemSlotLayer/ItemSlot4.parentInventory = self
 		#rescale this so it can hold all of the slots
 	#var InventorySizeX = numberOfSlotsX * sizeOfItemSlotX + 2 * sizeOfInventoryBoarderX + (numberOfSlotsX-1) * sizeOfItemSlotGapX
 	#var InventorySizeY = numberOfSlotsY * sizeOfItemSlotY + 2 * sizeOfInventoryBoarderY + (numberOfSlotsY-1) * sizeOfItemSlotGapY
-	#self.rect_size = Vector2(InventorySizeX,InventorySizeY)
+	self.rect_size = Vector2(InventorySizeX,InventorySizeY)
 		#move the inner slot container so its centerd in the Inventory
 	#$ItemSlotLayer.rect_global_position.x = self.rect_global_position.x + sizeOfInventoryBoarderX
 	#$ItemSlotLayer.rect_global_position.y = self.rect_global_position.y + sizeOfInventoryBoarderY
 	#fillItemSlotGrid() #place all of the itemslots
-	pass
 
 func fillItemSlotGrid():
 	var width = 0
@@ -64,10 +58,6 @@ func makeNewItemSlot(countX, countY):
 func _gui_input(event):
 	if(event.is_class("InputEventMouseButton")):
 		if(event.button_index == 2):
-			if(currentSlot!=null):
-				currentSlot.cancelDrag()
-			currentItem = null
-			currentSlot = null
 			set_drag_preview(Control.new())
 	
 	#if(event == InputEventMouseButton):
@@ -80,28 +70,7 @@ func swapSlots(firstSlotID, secondSlotID):
 	var secondColor = ListOfItemSlots[secondSlotID].ItemData["ItemType"]
 	ListOfItemSlots[secondSlotID].updateColor(firstColor)
 	ListOfItemSlots[firstSlotID].updateColor(secondColor)
-
-func processDrop(ItemSlot):
-	if(ItemSlot == currentSlot):
-		ItemSlot.cancelDrag()
-	else:
-		currentSlot.cancelDrag()
-		ItemSlot.changeItem(currentItem)
-		currentSlot = null
-		currentItem = null
-	pass
-
-func processPick(ItemSlot, ItemData):
-	if(currentSlot==null && currentItem==null):
-		currentItem = ItemData
-		currentSlot = ItemSlot
-		print("pick up processed")
-		print("current slot is: ",currentSlot," and item data is: ",currentItem)
-	else:
-		ItemSlot.change
-	#called by item slot when a item pick happens
-	#correpsonding sound effects should be played
-	pass
+	
 	
 func lockInventory(type = 0):
 	#locks down entire inventory
