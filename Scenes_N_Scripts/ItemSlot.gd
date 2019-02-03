@@ -2,35 +2,28 @@ extends ColorRect
 
 var parentInventory #this holds the owner of this node
 var slotLocationID #a unique number defined by ItemManager
-var dragStarted = false
 var ItemData = {"ID" : 0, "ItemType" : "null", "ItemName" : "null", "color" : Color()}
 var SlotData = {"HoldsItem" : false, "IsLocked" : false}
 
 func _ready():
-	#call function 
-	ItemData["color"] = self.color
+	ItemData["color"] = self.color #for debug only
 	pass
 
 func _gui_input(event):
 	
 	if(event.is_class("InputEventMouseButton")):
-		if(event.button_index == 1 && !event.is_pressed()):
-			if(!SlotData["IsLocked"]):
-				get_drag_data(self.get_global_mouse_position())
-				accept_event()
+		if(!SlotData["IsLocked"]):
+			parentInventory.processEvent(event, self)
+			accept_event()
 	pass
 
 func get_drag_data(position):
-	#
-	#print("drag started")
-	if(!dragStarted):
-		dragStarted = true
-		parentInventory.processPick(self, ItemData)
-		var moving = ColorRect.new()
-		moving.rect_size = Vector2(rect_size.x,rect_size.y)
-		moving.color=self.color
-		set_drag_preview(moving)
-		return ItemData
+	parentInventory.processPick(self, ItemData)
+	var moving = ColorRect.new()
+	moving.rect_size = Vector2(rect_size.x,rect_size.y)
+	moving.color=self.color
+	set_drag_preview(moving)
+	return ItemData
 
 func can_drop_data(position, data):
 	#validity check should be sent to inventory

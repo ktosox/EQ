@@ -74,12 +74,6 @@ func _gui_input(event):
 	
 	
 	
-func swapSlots(firstSlotID, secondSlotID):
-	#update internal logic here
-	var firstColor = ListOfItemSlots[firstSlotID].ItemData["ItemType"]
-	var secondColor = ListOfItemSlots[secondSlotID].ItemData["ItemType"]
-	ListOfItemSlots[secondSlotID].updateColor(firstColor)
-	ListOfItemSlots[firstSlotID].updateColor(secondColor)
 
 func processDrop(ItemSlot):
 	if(ItemSlot == currentSlot):
@@ -91,25 +85,25 @@ func processDrop(ItemSlot):
 		currentItem = null
 	pass
 
-func processPick(ItemSlot, ItemData):
-	if(currentSlot==null && currentItem==null):
-		currentItem = ItemData
-		currentSlot = ItemSlot
-		print("pick up processed")
-		print("current slot is: ",currentSlot," and item data is: ",currentItem)
-	else:
-		ItemSlot.change
-	#called by item slot when a item pick happens
-	#correpsonding sound effects should be played
+func processEvent(event, source):
+	#called by slot or inventory when an event happens
+	#skipped if lock?
+	
+	#source detemrines where the event comes from,
+	#it's either ItemSLot or Inventory
+	
+	#extracts meaning out of event -> click? which button?
+	#calls the crrect functions to process whats going on
+	if(event.button_index == 1 && !event.is_pressed()):
+		pass
 	pass
+
 	
 func lockInventory(type = 0):
 	#locks down entire inventory
 	#all drag and pick up events are ignored util unlocked
 	pass
 
-
 func unlockInventory():
 	#removes lock from inventory
 	pass
-	
