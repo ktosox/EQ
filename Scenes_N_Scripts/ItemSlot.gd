@@ -14,16 +14,16 @@ func _gui_input(event):
 	if(event.is_class("InputEventMouseButton")):
 		if(!SlotData["IsLocked"]):
 			parentInventory.processEvent(event, self)
-			accept_event()
+			#accept_event()
 	pass
 
-func get_drag_data(position):
-	parentInventory.processPick(self, ItemData)
-	var moving = ColorRect.new()
-	moving.rect_size = Vector2(rect_size.x,rect_size.y)
-	moving.color=self.color
-	set_drag_preview(moving)
-	return ItemData
+#func get_drag_data(position):
+#	parentInventory.processPick(self, ItemData)
+#	var moving = ColorRect.new()
+#	moving.rect_size = Vector2(rect_size.x,rect_size.y)
+#	moving.color=self.color
+#	set_drag_preview(moving)
+#	return ItemData
 
 func can_drop_data(position, data):
 	#validity check should be sent to inventory
@@ -59,10 +59,6 @@ func changeItem(newItemData):
 	updateItemTexture()
 	#update the ItemData held by this ItemSlot
 	#reload HeldITemTexture
-	pass
-
-func cancelDrag():
-	dragStarted = false
 	pass
 
 func lockSlot(type = 0):

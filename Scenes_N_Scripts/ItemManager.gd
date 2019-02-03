@@ -17,14 +17,16 @@ func _ready():
 	#for a 0 to get_child_count()-1 / ownedInventories.append(get_child(a))
 	
 	ownedInventories.append(get_child(0))
-	ownedInventories.append(get_child(1))
 	ownedInventories[0].parentManager = self
-	ownedInventories[1].parentManager = self
 	pass
 
 #func _process(delta):
 #	pass
 
+#admin stuff at creating a new entry in the item database
+#returns a uniq Item ID
+func createItemData():
+	pass
 
 #archiwizing chages to items goes here WIP
 

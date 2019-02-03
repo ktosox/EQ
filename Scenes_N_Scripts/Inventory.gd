@@ -63,27 +63,22 @@ func makeNewItemSlot(countX, countY):
 	
 func _gui_input(event):
 	if(event.is_class("InputEventMouseButton")):
-		if(event.button_index == 2):
-			if(currentSlot!=null):
-				currentSlot.cancelDrag()
-			currentItem = null
-			currentSlot = null
-			set_drag_preview(Control.new())
+		processEvent(event, null)
 	
 	#if(event == InputEventMouseButton):
 	
 	
 	
 
-func processDrop(ItemSlot):
-	if(ItemSlot == currentSlot):
-		ItemSlot.cancelDrag()
-	else:
-		currentSlot.cancelDrag()
-		ItemSlot.changeItem(currentItem)
-		currentSlot = null
-		currentItem = null
-	pass
+#func processDrop(ItemSlot):
+#	if(ItemSlot == currentSlot):
+#		ItemSlot.cancelDrag()
+#	else:
+#		currentSlot.cancelDrag()
+#		ItemSlot.changeItem(currentItem)
+#		currentSlot = null
+#		currentItem = null
+#	pass
 
 func processEvent(event, source):
 	#called by slot or inventory when an event happens
@@ -92,11 +87,28 @@ func processEvent(event, source):
 	#source detemrines where the event comes from,
 	#it's either ItemSLot or Inventory
 	
+	if(source == null): #this means the inventory is making the call, not an ItemSlot
+		if(event.button_index == 2 && event.is_pressed()):
+			print("grab cancelled")
+			set_drag_preview(Control.new())
+	else:
 	#extracts meaning out of event -> click? which button?
 	#calls the crrect functions to process whats going on
-	if(event.button_index == 1 && !event.is_pressed()):
+	#event.button_index == 1 is left mouse button
+	#event.button_index == 2 is right mouse button
+		if(event.button_index == 1 && !event.is_pressed()):
+			print("left button up on slot: ", source)
+		if(event.button_index == 2 && !event.is_pressed()):
+			print("right button up on slot: ", source)
+		if(event.button_index == 2 && event.is_pressed()):
+			print("right button down on slot: ", source)
+		if(event.button_index == 1 && event.is_pressed()):
+			print("left button down on slot: ", source)
+			var moving = ColorRect.new()
+			moving.rect_size = Vector2(source.rect_size.x,source.rect_size.y)
+			moving.color=source.color
+			set_drag_preview(moving)
 		pass
-	pass
 
 	
 func lockInventory(type = 0):
