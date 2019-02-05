@@ -2,24 +2,10 @@ extends ColorRect
 
 var parentManager #this holds the manager controling this inventory
 
+var inventoryIsLocked = false
+
 var currentItem = null
 var currentSlot = null
-
-#DEFINE NUMBER OF ITEM SLOTS
-const numberOfSlotsX = 5
-const numberOfSlotsY = 5
-
-#DEFINE SIZE/SHAPE OF ITEM SLOTS
-const sizeOfItemSlotX = 35
-const sizeOfItemSlotY = 35
-
-#DEFINE HOW BIG THE BOARDER SHOULD BE
-const sizeOfInventoryBoarderX = 15
-const sizeOfInventoryBoarderY = 15
-
-#DEFINE SPACE BETWEEN SLOTS
-const sizeOfItemSlotGapX = 0
-const sizeOfItemSlotGapY = 0
 
 #preload item class
 var ItemSlotBase = load("res://Scenes_N_Scripts/ItemSlot.tscn")
@@ -63,7 +49,7 @@ func makeNewItemSlot(countX, countY):
 	
 func _gui_input(event):
 	if(event.is_class("InputEventMouseButton")):
-		processEvent(event, null)
+			processEvent(event, null)
 	
 	#if(event == InputEventMouseButton):
 	
@@ -83,13 +69,16 @@ func _gui_input(event):
 func processEvent(event, source):
 	#called by slot or inventory when an event happens
 	#skipped if lock?
-	
+	if(inventoryIsLocked):
+		return
 	#source detemrines where the event comes from,
 	#it's either ItemSLot or Inventory
 	
 	if(source == null): #this means the inventory is making the call, not an ItemSlot
 		if(event.button_index == 2 && event.is_pressed()):
 			print("grab cancelled")
+			currentItem = null
+			currentSlot = null
 			set_drag_preview(Control.new())
 	else:
 	#extracts meaning out of event -> click? which button?
@@ -104,18 +93,56 @@ func processEvent(event, source):
 			print("right button down on slot: ", source)
 		if(event.button_index == 1 && event.is_pressed()):
 			print("left button down on slot: ", source)
-			var moving = ColorRect.new()
-			moving.rect_size = Vector2(source.rect_size.x,source.rect_size.y)
-			moving.color=source.color
-			set_drag_preview(moving)
+			if(currentItem == null):
+				var moving = ColorRect.new()
+				moving.rect_size = Vector2(source.rect_size.x,source.rect_size.y)
+				moving.color = source.color
+				set_drag_preview(moving)
+				currentItem = source.color
+				currentSlot = source
+			else:
+				currentSlot.color = source.color
+				source.color = currentItem
+				currentItem = null
+				currentSlot = null
+				set_drag_preview(Control.new())
 		pass
 
 	
 func lockInventory(type = 0):
+	inventoryIsLocked = true
+	$Overlay.visible =true
 	#locks down entire inventory
 	#all drag and pick up events are ignored util unlocked
 	pass
 
 func unlockInventory():
+	inventoryIsLocked = false
+	$Overlay.visible = false
 	#removes lock from inventory
 	pass
+
+func _on_Button_pressed():
+	if(inventoryIsLocked):
+		unlockInventory()
+	else:
+		lockInventory(0)
+	pass # replace with function body
+
+
+
+#DEFINE NUMBER OF ITEM SLOTS
+const numberOfSlotsX = 5
+const numberOfSlotsY = 5
+
+#DEFINE SIZE/SHAPE OF ITEM SLOTS
+const sizeOfItemSlotX = 35
+const sizeOfItemSlotY = 35
+
+#DEFINE HOW BIG THE BOARDER SHOULD BE
+const sizeOfInventoryBoarderX = 15
+const sizeOfInventoryBoarderY = 15
+
+#DEFINE SPACE BETWEEN SLOTS
+const sizeOfItemSlotGapX = 0
+const sizeOfItemSlotGapY = 0
