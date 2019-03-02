@@ -108,7 +108,7 @@ func processEvent(event, source):
 				set_drag_preview(Control.new())
 		pass
 
-	
+				# INVENTORY LOCKING / UNLOCKING #
 func lockInventory(type = 0):
 	inventoryIsLocked = true
 	$Overlay.visible =true
@@ -122,14 +122,17 @@ func unlockInventory():
 	#removes lock from inventory
 	pass
 
-func _on_Button_pressed():
+				# DEBUGGING STUFF #
+
+
+func _on_Button_pressed(): #debug button
 	if(inventoryIsLocked):
 		unlockInventory()
 	else:
 		lockInventory(0)
-	pass # replace with function body
+	pass
 
-
+# no longer used
 
 #DEFINE NUMBER OF ITEM SLOTS
 const numberOfSlotsX = 5
