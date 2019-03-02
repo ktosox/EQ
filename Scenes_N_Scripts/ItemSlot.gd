@@ -2,7 +2,7 @@ extends ColorRect
 
 var parentInventory #this holds the owner of this node
 var slotLocationID #a unique number defined by ItemManager
-var ItemData = {"ID" : 0, "ItemType" : "null", "ItemName" : "null", "color" : Color()}
+var ItemData = {"ID" : 0, "ItemType" : "null", "ItemName" : "null", "texture" : Color()}
 var SlotData = {"HoldsItem" : false, "IsLocked" : false}
 
 func _ready():
@@ -33,11 +33,6 @@ func can_drop_data(position, data):
 	else:
 		return true
 
-func drop_data(position, newItem):
-	parentInventory.processDrop(self)
-	#parentInventory.swapSlots(ItemData["ID"],newItem["ID"])
-	#$AudioDrop.play()#sholud be on magaer level
-	pass
 
 func updateItemTexture():
 	self.color = ItemData["color"]

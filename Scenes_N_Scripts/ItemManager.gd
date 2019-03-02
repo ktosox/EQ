@@ -1,7 +1,7 @@
 extends ReferenceRect
 
 
-var itemSlotIDTracker = 0
+var itemSlotIDTracker = 0 #used for setting IDs for item slots
 
 
 #internal database copy goes here
@@ -28,7 +28,7 @@ func _ready():
 func createItemData():
 	pass
 
-#archiwizing chages to items goes here WIP
+#archiveing chages to items goes here WIP
 
 
 #fragmenation check goes here WIP

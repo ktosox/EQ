@@ -76,6 +76,8 @@ func processEvent(event, source):
 	
 	if(source == null): #this means the inventory is making the call, not an ItemSlot
 		if(event.button_index == 2 && event.is_pressed()):
+			if(currentItem==null):
+				return
 			print("grab cancelled")
 			currentItem = null
 			currentSlot = null
@@ -94,9 +96,9 @@ func processEvent(event, source):
 		if(event.button_index == 1 && event.is_pressed()):
 			print("left button down on slot: ", source)
 			if(currentItem == null):
-				var moving = ColorRect.new()
+				var moving = TextureRect.new()
 				moving.rect_size = Vector2(source.rect_size.x,source.rect_size.y)
-				moving.color = source.color
+				moving.texture  = source.ItemTexture.texture
 				set_drag_preview(moving)
 				currentItem = source.color
 				currentSlot = source
@@ -109,6 +111,7 @@ func processEvent(event, source):
 		pass
 
 				# INVENTORY LOCKING / UNLOCKING #
+
 func lockInventory(type = 0):
 	inventoryIsLocked = true
 	$Overlay.visible =true
