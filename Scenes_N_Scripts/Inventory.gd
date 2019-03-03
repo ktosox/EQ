@@ -98,7 +98,8 @@ func processEvent(event, source):
 			if(currentItem == null):
 				var moving = TextureRect.new()
 				moving.rect_size = Vector2(source.rect_size.x,source.rect_size.y)
-				moving.texture  = source.ItemTexture.texture
+				moving.texture  = source.getTexture()
+				moving.expand = true
 				set_drag_preview(moving)
 				currentItem = source.color
 				currentSlot = source

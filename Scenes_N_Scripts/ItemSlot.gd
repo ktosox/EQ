@@ -3,10 +3,12 @@ extends ColorRect
 var parentInventory #this holds the owner of this node
 var slotLocationID #a unique number defined by ItemManager
 var ItemData = {"ID" : 0, "ItemType" : "null", "ItemName" : "null", "texture" : Color()}
-var SlotData = {"HoldsItem" : false, "IsLocked" : false}
+var SlotData = {"HoldsItem" : false, "IsLocked" : false, "Texture" : null}
+
+
 
 func _ready():
-	ItemData["color"] = self.color #for debug only
+	
 	pass
 
 func _gui_input(event):
@@ -40,6 +42,15 @@ func updateItemTexture():
 	#$HeldItemTexture.texture =
 	pass
 	
+
+func getTexture():
+	return $ItemTexture.texture
+
+func setTexture(newTexture):
+	$ItemTexture.texture = newTexture
+	pass
+
+
 func freeItem():
 	#remove all item data
 	ItemData["ID"] = 0

@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes_N_Scripts/ItemSlot.gd" type="Script" id=1]
 [ext_resource path="res://Resources/t_01.PNG" type="Texture" id=2]
 
-[node name="ItemSlot" type="ColorRect"]
+[node name="ItemSlot" type="ColorRect" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
