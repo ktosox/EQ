@@ -1,7 +1,8 @@
 extends ColorRect
 
 var parentManager #this holds the manager controling this inventory
-
+export var inventory_height = 9
+export var inventory_width = 4
 var inventoryIsLocked = false
 
 var currentItem = null
@@ -15,14 +16,10 @@ var ListOfItemSlots = {}
 
 
 func _ready():
-	$ItemSlotLayer/ItemSlot.parentInventory = self
-	$ItemSlotLayer/ItemSlot2.parentInventory = self
-	$ItemSlotLayer/ItemSlot3.parentInventory = self
-	$ItemSlotLayer/ItemSlot4.parentInventory = self
 		#rescale this so it can hold all of the slots
-	#var InventorySizeX = numberOfSlotsX * sizeOfItemSlotX + 2 * sizeOfInventoryBoarderX + (numberOfSlotsX-1) * sizeOfItemSlotGapX
-	#var InventorySizeY = numberOfSlotsY * sizeOfItemSlotY + 2 * sizeOfInventoryBoarderY + (numberOfSlotsY-1) * sizeOfItemSlotGapY
-	#self.rect_size = Vector2(InventorySizeX,InventorySizeY)
+	var InventorySizeX = inventory_width * sizeOfItemSlotX + 2 * sizeOfInventoryBoarderX + (inventory_width-1) * sizeOfItemSlotGapX
+	var InventorySizeY = inventory_height * sizeOfItemSlotY + 2 * sizeOfInventoryBoarderY + (inventory_height-1) * sizeOfItemSlotGapY
+	self.rect_size = Vector2(InventorySizeX,InventorySizeY)
 		#move the inner slot container so its centerd in the Inventory
 	#$ItemSlotLayer.rect_global_position.x = self.rect_global_position.x + sizeOfInventoryBoarderX
 	#$ItemSlotLayer.rect_global_position.y = self.rect_global_position.y + sizeOfInventoryBoarderY
@@ -32,8 +29,8 @@ func _ready():
 func fillItemSlotGrid():
 	var width = 0
 	var height = 0
-	for height in range(numberOfSlotsY):
-		for width in range(numberOfSlotsX):
+	for height in range(inventory_height):
+		for width in range(inventory_width):
 			makeNewItemSlot(width, height)
 
 func makeNewItemSlot(countX, countY):
@@ -138,9 +135,7 @@ func _on_Button_pressed(): #debug button
 
 # no longer used
 
-#DEFINE NUMBER OF ITEM SLOTS
-const numberOfSlotsX = 5
-const numberOfSlotsY = 5
+
 
 #DEFINE SIZE/SHAPE OF ITEM SLOTS
 const sizeOfItemSlotX = 35

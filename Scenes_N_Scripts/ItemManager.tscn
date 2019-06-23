@@ -3,27 +3,13 @@
 [ext_resource path="res://Scenes_N_Scripts/ItemManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes_N_Scripts/Inventory.tscn" type="PackedScene" id=2]
 
-[node name="Item Manager" type="ReferenceRect" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="Item Manager" type="ReferenceRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Rect" ]
 
-[node name="Inventory" parent="." index="0" instance=ExtResource( 2 )]
-
+[node name="Inventory" parent="." instance=ExtResource( 2 )]
 margin_left = 53.0
 margin_top = 73.0
 margin_right = -648.0
 margin_bottom = -277.0
-_sections_unfolded = [ "Mouse", "Rect" ]
-
-
