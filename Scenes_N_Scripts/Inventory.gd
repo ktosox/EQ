@@ -21,9 +21,9 @@ func _ready():
 	var InventorySizeY = inventory_height * sizeOfItemSlotY + 2 * sizeOfInventoryBoarderY + (inventory_height-1) * sizeOfItemSlotGapY
 	self.rect_size = Vector2(InventorySizeX,InventorySizeY)
 		#move the inner slot container so its centerd in the Inventory
-	#$ItemSlotLayer.rect_global_position.x = self.rect_global_position.x + sizeOfInventoryBoarderX
-	#$ItemSlotLayer.rect_global_position.y = self.rect_global_position.y + sizeOfInventoryBoarderY
-	#fillItemSlotGrid() #place all of the itemslots
+	$ItemSlotLayer.rect_global_position.x = self.rect_global_position.x + sizeOfInventoryBoarderX
+	$ItemSlotLayer.rect_global_position.y = self.rect_global_position.y + sizeOfInventoryBoarderY
+	fillItemSlotGrid() #place all of the itemslots
 	pass
 
 func fillItemSlotGrid():
@@ -36,7 +36,7 @@ func fillItemSlotGrid():
 func makeNewItemSlot(countX, countY):
 	var NewSlot = ItemSlotBase.instance()
 	NewSlot.parentInventory = self #set this as the controler of NewSlot
-	NewSlot.slotLocation = parentManager.assignSlotLocation()
+	#NewSlot.slotLocation = parentManager.assignSlotLocation()
 	ListOfItemSlots[NewSlot.slotLocationID] = NewSlot #pair ID and NewSlot
 	#resize and place NewSlot
 	NewSlot.rect_size = Vector2(sizeOfItemSlotX,sizeOfItemSlotY)
@@ -146,5 +146,5 @@ const sizeOfInventoryBoarderX = 15
 const sizeOfInventoryBoarderY = 15
 
 #DEFINE SPACE BETWEEN SLOTS
-const sizeOfItemSlotGapX = 0
-const sizeOfItemSlotGapY = 0
+const sizeOfItemSlotGapX = 4
+const sizeOfItemSlotGapY = 4

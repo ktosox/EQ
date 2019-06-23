@@ -3,57 +3,24 @@
 [ext_resource path="res://Scenes_N_Scripts/ItemSlot.gd" type="Script" id=1]
 [ext_resource path="res://Resources/t_01.PNG" type="Texture" id=2]
 
-[node name="ItemSlot" type="ColorRect" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="ItemSlot" type="ColorRect"]
 margin_right = 20.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.269531, 0.253738, 0.253738, 1 )
 script = ExtResource( 1 )
-_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Visibility" ]
 
-[node name="ItemTexture" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="ItemTexture" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 6
-_sections_unfolded = [ "Anchor", "Margin", "Rect", "Size Flags" ]
 
-[node name="Overlay" type="ColorRect" parent="." index="1"]
-
-visible = false
+[node name="Overlay" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0.690588 )
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 color = Color( 0.582031, 0.443344, 0.443344, 1 )
-_sections_unfolded = [ "Visibility" ]
-
-
