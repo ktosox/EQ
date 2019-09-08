@@ -9,7 +9,7 @@ var currentItem = null
 var currentSlot = null
 
 #preload item class
-var ItemSlotBase = load("res://Scenes_N_Scripts/ItemSlot.tscn")
+var ItemSlotBase = load("res://Inventory_Folder/ItemSlot.tscn")
 
 #dictionary pairs ItemSlot IDs with specific ItemSlot Nodes
 var ListOfItemSlots = {}

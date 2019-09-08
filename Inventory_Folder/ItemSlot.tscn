@@ -1,7 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes_N_Scripts/ItemSlot.gd" type="Script" id=1]
-[ext_resource path="res://Resources/t_01.PNG" type="Texture" id=2]
+[ext_resource path="res://Inventory_Folder/ItemSlot.gd" type="Script" id=1]
+[ext_resource path="res://Resources/potions/t_01.PNG" type="Texture" id=2]
+
+
+
 
 [node name="ItemSlot" type="ColorRect"]
 margin_right = 20.0

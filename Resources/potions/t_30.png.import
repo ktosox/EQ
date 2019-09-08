@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t_31.png-9a853a9911f2ad66ac157da949b19167.stex"
+path="res://.import/t_30.png-4c64da8ba5d64cc3552a1d91d7ffd33a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/t_31.png"
-dest_files=[ "res://.import/t_31.png-9a853a9911f2ad66ac157da949b19167.stex" ]
+source_file="res://Resources/potions/t_30.png"
+dest_files=[ "res://.import/t_30.png-4c64da8ba5d64cc3552a1d91d7ffd33a.stex" ]
 
 [params]
 

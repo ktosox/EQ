@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/t_30.png-7d42f25d3dca4d391e0fc059f7cf7a58.stex"
+path="res://.import/Simple_Border.png-9de9e026db57c67d14e1853bea73b75b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/t_30.png"
-dest_files=[ "res://.import/t_30.png-7d42f25d3dca4d391e0fc059f7cf7a58.stex" ]
+source_file="res://Resources/Simple_Border.png"
+dest_files=[ "res://.import/Simple_Border.png-9de9e026db57c67d14e1853bea73b75b.stex" ]
 
 [params]
 
