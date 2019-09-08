@@ -11,6 +11,8 @@ margin_right = -760.0
 margin_bottom = -363.0
 color = Color( 0.211765, 0.196078, 0.784314, 1 )
 script = ExtResource( 1 )
+inventory_height = 10
+inventory_width = 2
 
 [node name="ItemSlotLayer" type="Control" parent="."]
 anchor_right = 1.0
