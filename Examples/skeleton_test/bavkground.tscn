@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Examples/skeleton_test/dense_pipes.png" type="Texture" id=1]
+[ext_resource path="res://Examples/skeleton_test/bavkground.gd" type="Script" id=2]
+[ext_resource path="res://Examples/skeleton_test/Leg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Examples/skeleton_test/leg_mk_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Examples/skeleton_test/Dark_Purple.png" type="Texture" id=5]
+
+[node name="bavkground" type="Sprite"]
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 149.123, 94.515 )
+scale = Vector2( 0.439999, 0.323776 )
+
+[node name="Leg2" parent="Node2D" instance=ExtResource( 3 )]
+right = false
+
+[node name="Leg" parent="Node2D" instance=ExtResource( 3 )]
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2( 699.609, 196.103 )
+
+[node name="leg_mk_3" parent="Node2D2" instance=ExtResource( 4 )]
+right = true
+
+[node name="leg_mk_2" parent="Node2D2" instance=ExtResource( 4 )]
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D2"]
+position = Vector2( -0.82253, 0 )
+scale = Vector2( 0.464284, 1 )
+texture = ExtResource( 5 )
+polygon = PoolVector2Array( -48.4637, -2.21678, 48.7742, 1.03268, 49.3036, -115.348, -43.5754, -111.158 )
+uv = PoolVector2Array( 544.77, 139.349, 627.035, 140.163, 627.035, 84.7766, 528.48, 88.8492 )

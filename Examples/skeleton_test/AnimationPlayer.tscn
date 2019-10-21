@@ -1,0 +1,125 @@
+[gd_scene load_steps=14 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "jump"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/blob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 2, 3.5, 4, 5 ),
+"transitions": PoolRealArray( 1, -0.5, 0.5, -2, 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -30 ), Vector2( 0, -90 ), Vector2( 0.663422, -0.76079 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/blob:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.92, 0.58 ), Vector2( 0.98, 1.68 ), Vector2( 1, 1.9 ), Vector2( 1, 1.16667 ), Vector2( 1.6, 0.8 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "stretch"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/blob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/blob:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.4, 3.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="AnimationNodeAdd2" id=3]
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "stretch"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "jump"
+
+[sub_resource type="AnimationNodeBlendTree" id=6]
+graph_offset = Vector2( 0, 73.5 )
+nodes/Add2/node = SubResource( 3 )
+nodes/Add2/position = Vector2( 260, 80 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( 80, 100 )
+"nodes/Animation 2/node" = SubResource( 4 )
+"nodes/Animation 2/position" = Vector2( 60, 240 )
+nodes/output/position = Vector2( 460, 80 )
+node_connections = [ "output", 0, "Add2", "Add2", 0, "Animation", "Add2", 1, "Animation 2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "stretch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/BlendTree/node = SubResource( 6 )
+states/BlendTree/position = Vector2( 265, 50 )
+states/jump/node = SubResource( 7 )
+states/jump/position = Vector2( 112, 106 )
+states/stretch/node = SubResource( 8 )
+states/stretch/position = Vector2( 476, 99 )
+transitions = [ "jump", "BlendTree", SubResource( 9 ), "BlendTree", "stretch", SubResource( 10 ), "stretch", "jump", SubResource( 11 ) ]
+start_node = "jump"
+end_node = "stretch"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+anims/jump = SubResource( 1 )
+anims/stretch = SubResource( 2 )
+
+[node name="blob" type="Polygon2D" parent="."]
+position = Vector2( 0, -4.47108 )
+scale = Vector2( 1.6636, 0.845311 )
+polygon = PoolVector2Array( -30.1756, -22.3895, -37.159, -0.0426483, -15.5105, -0.0426483, 11.0264, -0.740982, 33.3732, -0.740982, 31.2782, -21.6911, 17.3114, -30.0712, -0.147049, -32.8645, -16.2088, -30.0712 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("..")
+active = true
+parameters/playback = SubResource( 13 )
+parameters/BlendTree/Add2/add_amount = 0.19

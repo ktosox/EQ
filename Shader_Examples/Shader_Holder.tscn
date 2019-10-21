@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Resources/potions/t_104.png" type="Texture" id=1]
 [ext_resource path="res://Resources/potions/t_98.png" type="Texture" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://Resources/potions/t_38.png" type="Texture" id=5]
 [ext_resource path="res://Resources/potions/t_04.PNG" type="Texture" id=6]
 [ext_resource path="res://Resources/potions/t_01.PNG" type="Texture" id=7]
+[ext_resource path="res://Resources/potions/t_31.png" type="Texture" id=8]
+[ext_resource path="res://Shader_Examples/itemframe2.png" type="Texture" id=9]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=31]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 	
@@ -24,11 +26,11 @@ void fragment() {
 	COLOR = col;
 }	"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=32]
+shader = SubResource( 31 )
 shader_param/amount = 2.572
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=33]
 resource_name = "ilde"
 length = 4.0
 loop = true
@@ -45,7 +47,7 @@ tracks/0/keys = {
 "values": [ 0.0, 20.0, 0.499945, 3.0, 0.0 ]
 }
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=34]
 code = "shader_type canvas_item;	
 	
 uniform bool apply;
@@ -58,12 +60,12 @@ void fragment() {
 	else COLOR = texture(TEXTURE, UV);
 }	"
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=35]
+shader = SubResource( 34 )
 shader_param/apply = true
 shader_param/modulate = Color( 1, 0.916133, 0.645171, 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=36]
 resource_name = "idle"
 length = 5.0
 loop = true
@@ -92,7 +94,7 @@ tracks/1/keys = {
 "values": [ true, true, false ]
 }
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=37]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 	
@@ -108,12 +110,12 @@ void fragment() {
 	COLOR = mix(shadow, col, col.a);
 }	"
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+[sub_resource type="ShaderMaterial" id=38]
+shader = SubResource( 37 )
 shader_param/offset = Vector2( 0, 0.202455 )
 shader_param/modulate = Color( 0.900802, 0.822483, 0.786979, 1 )
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=39]
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -142,7 +144,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ), Vector2( 0, 2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=40]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 	
@@ -154,11 +156,11 @@ void fragment() {
 	COLOR = col;
 }	"
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="ShaderMaterial" id=41]
+shader = SubResource( 40 )
 shader_param/direction = Vector2( -0.33452, -0.649083 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=42]
 resource_name = "idle"
 length = 5.0
 loop = true
@@ -175,7 +177,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0.2, 0.7 ), Vector2( 0, -0.5 ), Vector2( 0.8, -0.3 ), Vector2( -0.5, -0.7 ), Vector2( -0.5, 0.7 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Shader" id=13]
+[sub_resource type="Shader" id=43]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 	
@@ -189,11 +191,11 @@ void fragment() {
 	COLOR = col;
 }	"
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 13 )
+[sub_resource type="ShaderMaterial" id=44]
+shader = SubResource( 43 )
 shader_param/range = -2.6524
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=45]
 resource_name = "idle"
 length = 10.0
 loop = true
@@ -210,7 +212,7 @@ tracks/0/keys = {
 "values": [ 0.0, 2.0, -3.0, 0.0 ]
 }
 
-[sub_resource type="Shader" id=16]
+[sub_resource type="Shader" id=46]
 code = "shader_type canvas_item;		
 		
 render_mode blend_mix;		
@@ -225,12 +227,12 @@ void fragment() {
 		}
 }		"
 
-[sub_resource type="ShaderMaterial" id=17]
-shader = SubResource( 16 )
+[sub_resource type="ShaderMaterial" id=47]
+shader = SubResource( 46 )
 shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/range = 0.392054
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=48]
 resource_name = "idle"
 length = 3.0
 loop = true
@@ -247,7 +249,7 @@ tracks/0/keys = {
 "values": [ 0.3, 0.5, 0.3 ]
 }
 
-[sub_resource type="Shader" id=19]
+[sub_resource type="Shader" id=49]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 uniform float strenght;
@@ -262,11 +264,11 @@ void fragment() {
 	COLOR = mix(col,rainbow,strenght*0.3);
 	}"
 
-[sub_resource type="ShaderMaterial" id=20]
-shader = SubResource( 19 )
+[sub_resource type="ShaderMaterial" id=50]
+shader = SubResource( 49 )
 shader_param/strenght = 1.32775
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=51]
 resource_name = "idle"
 length = 3.0
 loop = true
@@ -283,7 +285,7 @@ tracks/0/keys = {
 "values": [ 0.0, 1.3, 2.0, 0.0 ]
 }
 
-[sub_resource type="Shader" id=22]
+[sub_resource type="Shader" id=52]
 code = "shader_type canvas_item;	
 render_mode blend_mix;	
 uniform float amount = 2.0;	
@@ -294,76 +296,206 @@ void fragment() {
 	COLOR = col;
 }	"
 
-[sub_resource type="ShaderMaterial" id=23]
-shader = SubResource( 22 )
+[sub_resource type="ShaderMaterial" id=53]
+shader = SubResource( 52 )
 shader_param/amount = 2.21
+
+[sub_resource type="Shader" id=54]
+code = "shader_type canvas_item;	
+render_mode blend_mix;	
+	
+uniform float angle = 10.0;	
+	
+void fragment() {	
+
+	vec4 col = texture(TEXTURE, UV);
+	COLOR = col;
+	COLOR.r += (col.r * abs(sin(angle))) - (col.g * cos(angle) * 0.5) - (col.b * cos(angle) * 0.5);
+	COLOR.g += (col.g * abs(sin(angle))) - (col.r * cos(angle) * 0.5) - (col.b * cos(angle) * 0.5);
+	COLOR.b += (col.b * abs(sin(angle))) - (col.g * cos(angle) * 0.5) - (col.r * cos(angle) * 0.5);
+}	"
+
+[sub_resource type="ShaderMaterial" id=55]
+shader = SubResource( 54 )
+shader_param/angle = 1.68528
+
+[sub_resource type="Animation" id=56]
+resource_name = "New Anim"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4, 3, 5 ),
+"transitions": PoolRealArray( 1, 0.5, -0.5, 1 ),
+"update": 0,
+"values": [ -1.0, 0.0, 4.0, -1.0 ]
+}
+
+[sub_resource type="Shader" id=57]
+code = "shader_type canvas_item;	
+render_mode blend_mix;	
+	
+uniform sampler2D frame;
+uniform float strenght = 1.0;
+
+void vertex(){
+	VERTEX.x *= strenght;
+}
+
+void fragment() {	
+	COLOR = texture(TEXTURE,UV);
+	COLOR.a = COLOR.a - (texture(frame,UV).a * strenght);
+}	"
+
+[sub_resource type="ShaderMaterial" id=58]
+shader = SubResource( 57 )
+shader_param/strenght = 1.26909
+shader_param/frame = ExtResource( 9 )
+
+[sub_resource type="Animation" id=59]
+resource_name = "New Anim"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/strenght")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, -2 ),
+"update": 0,
+"values": [ 1.0, 1.5 ]
+}
+
+[sub_resource type="Shader" id=30]
+code = "shader_type canvas_item;	
+render_mode blend_mix;	
+
+uniform float range = 1.0;
+void vertex(){
+	VERTEX *= range; 
+	}"
+
+[sub_resource type="ShaderMaterial" id=60]
+shader = SubResource( 30 )
+shader_param/range = 1.88427
+
+[sub_resource type="Animation" id=61]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, -2, 0.5 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 2.0 ]
+}
 
 [node name="Shader_Holder" type="Node2D"]
 
 [node name="t_104" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 32 )
 position = Vector2( 53, 54 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_104"]
 autoplay = "ilde"
-anims/ilde = SubResource( 3 )
+anims/ilde = SubResource( 33 )
 
 [node name="t_98" type="Sprite" parent="."]
-material = SubResource( 5 )
+material = SubResource( 35 )
 position = Vector2( 144.364, 48.5428 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_98"]
 autoplay = "idle"
-anims/idle = SubResource( 6 )
+anims/idle = SubResource( 36 )
 
 [node name="t_144" type="Sprite" parent="."]
-material = SubResource( 8 )
-position = Vector2( 234.482, 52.3288 )
+material = SubResource( 38 )
+position = Vector2( 234.482, 51.3288 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_144"]
 autoplay = "idle"
-anims/idle = SubResource( 9 )
+anims/idle = SubResource( 39 )
 
 [node name="t_30" type="Sprite" parent="."]
-material = SubResource( 11 )
+material = SubResource( 41 )
 position = Vector2( 313.323, 46.8456 )
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_30"]
 autoplay = "idle"
-anims/idle = SubResource( 12 )
+anims/idle = SubResource( 42 )
 
 [node name="t_38" type="Sprite" parent="."]
-material = SubResource( 14 )
-position = Vector2( 412.778, 49.1801 )
+material = SubResource( 44 )
+position = Vector2( 413.778, 49.1801 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_38"]
 autoplay = "idle"
-anims/idle = SubResource( 15 )
+anims/idle = SubResource( 45 )
 
 [node name="t_04" type="Sprite" parent="."]
-material = SubResource( 17 )
+material = SubResource( 47 )
 position = Vector2( 498.95, 51.5952 )
 texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_04"]
 autoplay = "idle"
-anims/idle = SubResource( 18 )
+anims/idle = SubResource( 48 )
 
 [node name="t_105" type="Sprite" parent="."]
-material = SubResource( 20 )
+material = SubResource( 50 )
 position = Vector2( 605.828, 50.6218 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="t_105"]
 autoplay = "idle"
-anims/idle = SubResource( 21 )
+anims/idle = SubResource( 51 )
 
 [node name="t_01" type="Sprite" parent="."]
-material = SubResource( 23 )
+material = SubResource( 53 )
 position = Vector2( 686.635, 45.6218 )
 texture = ExtResource( 7 )
+
+[node name="t_99" type="Sprite" parent="."]
+material = SubResource( 55 )
+position = Vector2( 412.523, 148.618 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="t_99"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 56 )
+
+[node name="t_100" type="Sprite" parent="."]
+material = SubResource( 58 )
+position = Vector2( 602, 144 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="t_100"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 59 )
+
+[node name="t_05" type="Sprite" parent="."]
+material = SubResource( 60 )
+position = Vector2( 512.354, 149.03 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="t_05"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 61 )

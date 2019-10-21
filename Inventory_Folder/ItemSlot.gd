@@ -1,4 +1,4 @@
-extends ColorRect
+extends NinePatchRect
 
 var parentInventory #this holds the owner of this node
 var slotLocationID #a unique number defined by ItemManager
