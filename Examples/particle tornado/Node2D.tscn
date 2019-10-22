@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Examples/particle tornado/Pixel_Particle_3.png" type="Texture" id=1]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.537037, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Animation" id=2]
 resource_name = "New Anim"
@@ -22,12 +22,33 @@ tracks/0/keys = {
 "values": [ 4.44, 4.0, 5.0, 4.44 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "loop"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0 ]
+}
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.111111 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 90
 lifetime = 4.0
-speed_scale = 4.44092
+speed_scale = 4.99464
 texture = ExtResource( 1 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
@@ -40,7 +61,7 @@ scale_amount_curve = SubResource( 1 )
 "anims/New Anim" = SubResource( 2 )
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2( 133.38, 1.67248 )
+position = Vector2( 84.2873, -9.60567 )
 amount = 30
 texture = ExtResource( 1 )
 spread = 0.0
@@ -55,7 +76,7 @@ angle_random = 1.0
 scale_amount_curve = SubResource( 1 )
 
 [node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
-position = Vector2( 188.975, 97.1105 )
+position = Vector2( 188.975, 4.23161 )
 amount = 30
 texture = ExtResource( 1 )
 spread = 0.0
@@ -69,7 +90,7 @@ angle_random = 1.0
 scale_amount_curve = SubResource( 1 )
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
-position = Vector2( 77.7704, 73.5892 )
+position = Vector2( 88.3851, 96.8089 )
 amount = 50
 lifetime = 3.0
 speed_scale = 0.4
@@ -84,3 +105,62 @@ tangential_accel = 22.9
 angle = -720.0
 angle_random = 1.0
 scale_amount_curve = SubResource( 1 )
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+position = Vector2( 198.833, 101.793 )
+rotation = 0.234887
+amount = 50
+lifetime = 2.0
+speed_scale = 2.0
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 0.536456
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+tangential_accel = 1.0
+tangential_accel_random = 0.5
+angle = -720.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CPUParticles2D5"]
+anims/loop = SubResource( 3 )
+
+[node name="CPUParticles2D6" type="CPUParticles2D" parent="."]
+position = Vector2( 295.906, 9.46786 )
+amount = 50
+lifetime = 2.0
+speed_scale = 2.0
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 0.536456
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+tangential_accel = 1.0
+tangential_accel_random = 0.5
+angle = -720.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 4 )
+
+[node name="CPUParticles2D7" type="CPUParticles2D" parent="."]
+position = Vector2( -11.213, 103.362 )
+amount = 40
+lifetime = 2.0
+explosiveness = 0.1
+randomness = 0.31
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 11.58
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+angular_velocity = 198.62
+angular_velocity_random = 0.16
+tangential_accel_random = 0.5
+angle = -720.0
+angle_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 4 )
