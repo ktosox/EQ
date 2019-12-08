@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://dice fighter/Dice Roller.tscn" type="PackedScene" id=1]
+
+
+[node name="Arena" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dices" type="HBoxContainer" parent="."]
+margin_right = 492.0
+margin_bottom = 200.0
+
+[node name="Dice Box" parent="Dices" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 50.0
+margin_right = 64.0
+margin_bottom = 150.0
+
+[node name="Dice Box2" parent="Dices" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 68.0
+margin_top = 50.0
+margin_right = 132.0
+margin_bottom = 150.0
+
+[node name="Dice Box3" parent="Dices" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 136.0
+margin_top = 50.0
+margin_right = 200.0
+margin_bottom = 150.0
+
+[node name="Dice Box4" parent="Dices" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 204.0
+margin_top = 50.0
+margin_right = 268.0
+margin_bottom = 150.0
