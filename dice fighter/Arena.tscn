@@ -1,17 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://dice fighter/Dice Roller.tscn" type="PackedScene" id=1]
-
+[ext_resource path="res://dice fighter/Arena.gd" type="Script" id=1]
+[ext_resource path="res://dice fighter/Dice Roller.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dice fighter/Dice Taker.tscn" type="PackedScene" id=3]
 
 [node name="Arena" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 
 [node name="Dices" type="HBoxContainer" parent="."]
-margin_right = 492.0
-margin_bottom = 200.0
+margin_left = 247.993
+margin_top = 351.24
+margin_right = 739.993
+margin_bottom = 551.24
 
-[node name="Dice Box" parent="Dices" instance=ExtResource( 1 )]
+[node name="DiceBox" parent="Dices" instance=ExtResource( 2 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -21,7 +25,7 @@ margin_top = 50.0
 margin_right = 64.0
 margin_bottom = 150.0
 
-[node name="Dice Box2" parent="Dices" instance=ExtResource( 1 )]
+[node name="DiceBox2" parent="Dices" instance=ExtResource( 2 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -31,22 +35,26 @@ margin_top = 50.0
 margin_right = 132.0
 margin_bottom = 150.0
 
-[node name="Dice Box3" parent="Dices" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 136.0
-margin_top = 50.0
-margin_right = 200.0
-margin_bottom = 150.0
+[node name="Boxes" type="HBoxContainer" parent="."]
+margin_left = 214.588
+margin_top = 148.987
+margin_right = 702.588
+margin_bottom = 269.987
 
-[node name="Dice Box4" parent="Dices" instance=ExtResource( 1 )]
+[node name="Dice Taker" parent="Boxes" instance=ExtResource( 3 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 204.0
-margin_top = 50.0
-margin_right = 268.0
-margin_bottom = 150.0
+margin_left = 0.0
+margin_top = 31.0
+margin_right = 250.0
+margin_bottom = 121.0
+
+[node name="Button" type="Button" parent="."]
+margin_left = 493.028
+margin_top = 382.066
+margin_right = 572.028
+margin_bottom = 485.066
+text = "test re roll"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

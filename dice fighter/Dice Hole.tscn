@@ -1,64 +1,99 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Simple_Border.png" type="Texture" id=1]
 [ext_resource path="res://dice fighter/Dice Hole.gd" type="Script" id=2]
+[ext_resource path="res://Resources/potions/t_31.png" type="Texture" id=3]
+[ext_resource path="res://Resources/potions/t_104.png" type="Texture" id=4]
 
 [node name="Dice Hole" type="TextureRect"]
 margin_right = 64.0
 margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+rect_min_size = Vector2( 72, 72 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 5
 script = ExtResource( 2 )
+needed_face = 2
+needed_color = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Sign_indicator" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer"]
+[node name="Sign" type="TextureRect" parent="Sign_indicator"]
+modulate = Color( 0.4, 0.4, 0.4, 1 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 52.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 32, 32 )
+mouse_filter = 2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Held_Dice" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Color" type="ColorRect" parent="Held_Dice"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 56, 56 )
+margin_right = 68.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color( 0.517647, 0.501961, 0.458824, 0.792157 )
+color = Color( 1, 1, 1, 0.792157 )
+
+[node name="Sign" type="TextureRect" parent="Held_Dice"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 68.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
 
 [node name="Color_inidcator" type="Control" parent="."]
+editor/display_folded = true
 modulate = Color( 0.890196, 0.878431, 0, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Color_inidcator"]
-margin_left = 32.4702
-margin_top = -3.49475
-margin_right = 51.4702
-margin_bottom = 15.5052
+margin_left = 36.1585
+margin_top = -1.0359
+margin_right = 55.1585
+margin_bottom = 17.9641
 rect_rotation = 45.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="ColorRect2" type="ColorRect" parent="Color_inidcator"]
-margin_left = 32.4702
-margin_top = 53.9701
-margin_right = 51.4702
-margin_bottom = 72.9701
+margin_left = 38.0026
+margin_top = 60.7319
+margin_right = 57.0026
+margin_bottom = 79.7319
 rect_rotation = 45.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="ColorRect3" type="ColorRect" parent="Color_inidcator"]
-margin_left = 3.57174
-margin_top = 26.4003
-margin_right = 22.5717
-margin_bottom = 45.4003
+margin_left = 5.10852
+margin_top = 28.8592
+margin_right = 24.1085
+margin_bottom = 47.8592
 rect_rotation = 45.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="ColorRect4" type="ColorRect" parent="Color_inidcator"]
-margin_left = 60.7044
-margin_top = 24.9055
-margin_right = 79.7044
-margin_bottom = 43.9055
+margin_left = 67.1589
+margin_top = 28.2864
+margin_right = 86.1589
+margin_bottom = 47.2864
 rect_rotation = 45.0
 rect_scale = Vector2( 0.5, 0.5 )
